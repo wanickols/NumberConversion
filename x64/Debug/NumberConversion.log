@@ -1,2 +1,15 @@
-﻿  Application.cpp
+﻿  TextHandler.cpp
+C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.h(31,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.cpp(37,35): message : see reference to function template instantiation 'T TextHandler::stringToVal<float>(std::string)' being compiled
+          with
+          [
+              T=float
+          ]
+C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.h(42,35): warning C4101: 'ex': unreferenced local variable
+C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.h(33,14): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.cpp(41,33): message : see reference to function template instantiation 'T TextHandler::stringToVal<int>(std::string)' being compiled
+          with
+          [
+              T=int
+          ]
   NumberConversion.vcxproj -> C:\Projects\School\NumberConversion\x64\Debug\NumberConversion.exe
