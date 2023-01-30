@@ -12,8 +12,9 @@ TextHandler::~TextHandler()
 {
 }
 
-void TextHandler::conversionDialog()
+const bool TextHandler::conversionDialog()
 {
+
 	string response;
 	
 	//Intro dialog
@@ -24,25 +25,12 @@ void TextHandler::conversionDialog()
 		
 	cout << "Great! please enter the value you'd like to convert. " << endl;
 
-	getline(cin, response);
+	getline(cin, inputValue);
 
 
-	float f;
-	int i;
-	if (inputType == Dec)
-	{
-		if (response.find('.')) {
-			inputType = Float;
-		
-			f = stringToVal<float>(response);
-
-		
-		}else
-			i = stringToVal<int>(response);
-
-	}
-	
 	cout << "Nice number! " << endl;
+
+	Converter converter(inputType);
 
 	cout << "One last question. What are we converting to " << endl;
 
@@ -50,11 +38,23 @@ void TextHandler::conversionDialog()
 
 	cout << "Amazing! time to do some converting ..." << endl;
 
-	for (int i = 0; i < 3; i++) {
-		cout << "..." << endl;
-		this_thread::sleep_for(chrono::seconds(1));
-	}
+	const string& output = converter.convert(inputValue, convertType);
 
+
+	cout << "..." << endl;
+	this_thread::sleep_for(chrono::seconds(1));
+
+
+	cout << output << endl;
+
+	cout << "Would you like to convert again? (Y or N)" << endl;
+	
+	getline(cin, response);
+
+	if (response == "Y" || response == "Yes")
+		return true;
+	else
+		return false;
 }
 
 const ConversionTypes TextHandler::getConvertType(string& val)
@@ -81,7 +81,7 @@ const ConversionTypes TextHandler::getConvertType(string& val)
 	return type;
 }
 
-bool TextHandler::test()
+const bool TextHandler::test()
 {
 	bool results = true;
 

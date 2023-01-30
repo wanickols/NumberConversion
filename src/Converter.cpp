@@ -6,6 +6,9 @@ using namespace std;
 	//Constructor
 	Converter::Converter(const ConversionTypes& input_type) : inputType(input_type)
 	{
+
+		
+
 		returnValue = "";
 	}
 
@@ -17,19 +20,94 @@ using namespace std;
 
 	const std::string& Converter::convert(std::string& input, ConversionTypes returnType)
 	{
-		// TODO: insert return statement here
-		int val = 0;
+		
 
-		switch (returnType)
-		{
-		case Dec:
-			val = binToDec(input);
-			break;
-		default:
-			break;
+		if (inputType == returnType) {
+			returnValue = "I am sure if you think really hard, you can figure this out.";
+			return returnValue;
 		}
 
-		returnValue = " Value:" + val;
+		//Determines dec or float for DEC type
+		float f;
+		int i;
+		if (inputType == Dec)
+		{
+			size_t found = input.find('.');
+			size_t found2 = input.find('-');
+			if (found != string::npos || found2 != string::npos) {
+				inputType = Float;
+
+				f = stringToVal<float>(input);
+
+
+			}
+			else
+				i = stringToVal<int>(input);
+
+		}
+
+		switch (inputType)
+		{
+		case Dec:
+			switch (returnType)
+			{
+			case Bin:
+				returnValue = decToBin(i);
+				break;
+			case Hex:
+				returnValue = decToHex(i);
+				break;
+			default:
+				returnValue = " Something went wrong... DEC tried to convert to something that don't exist";
+				break;
+			}
+			break;
+		case Bin:
+			switch (returnType)
+			{
+			case Dec:
+				returnValue = std::to_string(binToDec(input));
+				break;
+			case Hex:
+				returnValue = binToHex(input);
+				break;
+			default:
+				returnValue = " Something went wrong... BIN tried to convert to something that don't exist";
+				break;
+			}
+			break;
+		case Hex:
+			switch (returnType)
+			{
+			case Dec:
+				returnValue = std::to_string(hexToDec(input));
+				break;
+			case Bin:
+				returnValue = hexToBin(input);
+				break;
+			default:
+				returnValue = " Something went wrong... HEX tried to convert to something that don't exist";
+				break;
+			}
+			break;
+		case Float:
+			switch (returnType)
+			{
+			case Bin:
+				returnValue = floatToBin(f);
+				break;
+			case Hex:
+				returnValue = "You made the rules, you know you can't do that :O";
+				break;
+			default:
+				returnValue = " Something went wrong... Float tried to convert to something that don't exist";
+				break;
+			}
+			break;
+		default:
+			returnValue = " Something went wrong... We couldn't find that input type.";
+			break;
+		}
 
 		return returnValue;
 	}
@@ -107,7 +185,7 @@ using namespace std;
 	}
 	const std::string Converter::binToHex(string val)
 	{
-		return translateIntToHex(binToDec(val)); 
+		return decToHex(binToDec(val)); 
 	}
 
 	float Converter::binToFloat(string& val)
@@ -237,7 +315,7 @@ using namespace std;
 			result = 'F';
 			break;
 		default:
-			cout << "Hex conversion issue"; //add error system eventually
+			cout << "Hex conversion issue" << val + "is weird"; //add error system eventually
 			break;
 		}
 		return result;

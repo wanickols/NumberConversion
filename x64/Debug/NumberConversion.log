@@ -1,13 +1,16 @@
-﻿  TextHandler.cpp
-C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.h(31,14): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.cpp(37,35): message : see reference to function template instantiation 'T TextHandler::stringToVal<float>(std::string)' being compiled
+﻿  Converter.cpp
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.cpp(125,17): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.cpp(158,41): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.h(40,15): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.cpp(40,33): message : see reference to function template instantiation 'T Converter::stringToVal<float>(std::string)' being compiled
           with
           [
               T=float
           ]
-C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.h(42,35): warning C4101: 'ex': unreferenced local variable
-C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.h(33,14): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Projects\School\NumberConversion\NumberConversion\src\TextHandler.cpp(41,33): message : see reference to function template instantiation 'T TextHandler::stringToVal<int>(std::string)' being compiled
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.h(46,39): warning C4101: 'ex': unreferenced local variable
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.h(51,35): warning C4101: 'ex': unreferenced local variable
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.h(42,15): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Projects\School\NumberConversion\NumberConversion\src\Converter.cpp(45,31): message : see reference to function template instantiation 'T Converter::stringToVal<int>(std::string)' being compiled
           with
           [
               T=int

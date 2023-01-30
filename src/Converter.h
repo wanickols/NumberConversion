@@ -24,7 +24,40 @@ public:
 	//Functions
 	const std::string& convert(std::string& input, ConversionTypes returnType);
 
+	template<typename T>
+	inline T stringToVal(std::string input)
+	{
 
+
+		std::size_t pos{};
+
+
+		try {
+			//Floats
+			T val;
+
+			if (inputType == ConversionTypes::Dec)
+				val = stoi(input);
+			else
+				val = stof(input);
+
+			return val;
+		}
+		catch (std::invalid_argument const& ex)
+		{
+			std::cout << "Invalid Argument. " << input << " Is not a number :{" << '\n';
+			return -1;
+		}
+		catch (std::out_of_range const& ex)
+		{
+			std::cout << "Out of range. " << '\n';
+			std::cout << input << " is too big." << '\n';
+			std::cout << "You think we're made of memory here?";
+			return -1;
+		}
+
+
+	}//runs through all conversion related test
 
 
 	//Conversions

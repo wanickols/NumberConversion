@@ -4,8 +4,11 @@
 int main()
 {	
 	TextHandler textHandler;
-	
-	textHandler.conversionDialog();
+	bool running = true;
+
+	while (running) {
+		running = textHandler.conversionDialog();
+	}
 	return 0;
 }
 
